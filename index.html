@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Wedding Invitation - UndanganKiita</title>
+
+  <!-- Favicon Standard -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+
+  <!-- PNG Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <!-- Apple (iPhone) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Android -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Theme color (biar address bar ikut warna) -->
+  <meta name="theme-color" content="#c08a5b">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Marcellus&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    img,
+    video {
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .font-title {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .loader-ring {
+      width: 60px;
+      height: 60px;
+      border: 4px solid #c08a5b;
+      border-top: 4px solid #1c1f26;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .fade-item {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s forwards;
+    }
+
+    .fade-item:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+
+    .fade-item:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+
+    .fade-item:nth-child(3) {
+      animation-delay: 0.9s;
+    }
+
+    .fade-item:nth-child(4) {
+      animation-delay: 1.2s;
+    }
+
+    .fade-item:nth-child(5) {
+      animation-delay: 1.5s;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body class="flex justify-center bg-[#1c1f26] text-[#f3e4d6]">
+
+  <div class="w-full max-w-[430px] bg-gradient-to-b from-[#1c1f26] via-[#2a1f1a] to-[#3b2318] relative shadow-2xl">
+
+    <!-- LOADING SCREEN -->
+    <div id="loader" class="fixed inset-0 z-[999] flex items-center justify-center bg-white">
+      <div class="loader-ring"></div>
+    </div>
+
+    <audio id="bgMusic" loop>
+      <source src="original-sound-doriwirawan-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicBtn"
+      class="fixed bottom-6 right-6 z-[999] w-12 h-12 rounded-full bg-[#c08a5b] text-white flex items-center justify-center shadow-lg hidden">
+
+      <svg id="iconPlay" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 24 24"
+        fill="currentColor">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+
+      <svg id="iconPause" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" viewBox="0 0 24 24"
+        fill="currentColor">
+        <path d="M6 5h4v14H6zm8 0h4v14h-4z" />
+      </svg>
+
+    </button>
+
+    <section id="cover" class="absolute inset-0 z-50">
+
+      <div class="relative w-full min-h-[100svh] overflow-hidden">
+
+        <video autoplay muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover">
+          <source src="cover.mp4" type="video/mp4">
+        </video>
+
+        <div class="absolute inset-0"></div>
+
+        <div class="relative z-10 flex flex-col items-center justify-center text-center px-6 min-h-[100svh]">
+
+          <p class="text-[#cbb79c] text-sm mb-3 tracking-[4px]"
+            style="font-family: 'Marcellus', serif; letter-spacing:3px;">
+            The Wedding Of
+          </p>
+
+          <h1 class="text-5xl md:text-6xl text-[#f3e4d6] mb-10 leading-tight"
+            style="font-family: 'Great Vibes', cursive;">
+            Rida' <span class="text-[#c08a5b]">&</span> Aisah
+          </h1>
+
+          <div class="bg-[#2a1f1a]/70 backdrop-blur-md 
+              border border-[#c08a5b]/40 
+              rounded-3xl px-10 py-10 
+              text-center shadow-2xl">
+
+            <p class="text-[#d6bfa7] text-sm mb-2 tracking-wide font-light">
+              Kepada Yth.
+            </p>
+
+            <p class="text-[#f3e4d6] text-lg mb-8 guest-name"
+              style="font-family: 'Cormorant Garamond', serif; letter-spacing:0.5px;">
+              Tamu Undangan
+            </p>
+
+            <button id="openBtn" class="flex items-center gap-3 px-8 py-3 rounded-full 
+             bg-[#c49a6c] text-[#1c1f26] 
+             font-semibold tracking-wide 
+             shadow-lg hover:scale-105 
+             transition duration-300 mx-auto">
+
+              <img src="https://cdn-icons-png.flaticon.com/128/1250/1250973.png" alt="icon surat" class="w-5 h-5">
+
+              Buka Undangan
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="content" class="hidden">
+
+      <div class="w-full snap-start relative reveal">
+        <video autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover block">
+          <source src="section 2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="w-full snap-start relative reveal">
+
+        <img src="section 3.jpg" alt="Section 3" class="w-full h-auto block">
+
+        <a href="https://instagram.com/rizki" target="_blank" class="absolute top-[37%] right-[22%]
+        transition duration-300 hover:scale-110 hover:-translate-y-1">
+
+          <img src="instagram.png" class="w-7 h-7">
+        </a>
+
+        <a href="https://instagram.com/aisyah" target="_blank" class="absolute top-[85%] right-[78%]
+        transition duration-300 hover:scale-110 hover:-translate-y-1">
+
+          <img src="instagram.png" class="w-7 h-7">
+        </a>
+
+      </div>
+
+      <!-- <div class="w-full snap-start relative reveal">
+
+        <img src="section 4.png" alt="Section 4" class="w-full h-auto block">
+
+        <a href="https://instagram.com/username" target="_blank" class="absolute bottom-20 left-1/2 -translate-x-1/2
+            transition duration-300 ease-out
+            hover:scale-110 hover:-translate-y-1 hover:opacity-80">
+
+          <img src="instagram.png" alt="Instagram" class="w-7 h-7">
+        </a>
+
+      </div> -->
+
+      <div class="w-full min-h-[100svh] relative reveal overflow-hidden">
+
+        <img src="section 4.jpg" alt="Section 4" class="absolute inset-0 w-full h-full object-cover">
+
+        <div
+          class="relative z-10 flex flex-col items-center text-center min-h-[100svh] px-6 pt-[20vh] pb-16 font-['Montserrat']">
+
+          <div id="countdown" class="grid grid-cols-4 gap-3 mb-10 fade-item text-[#5c3a2e] w-full max-w-xs">
+
+            <div class="bg-[#f5ede3]/80 backdrop-blur-md rounded-2xl py-3 shadow-md">
+              <p id="days" class="text-xl font-semibold">00</p>
+              <span class="text-[10px] tracking-wide">Days</span>
+            </div>
+
+            <div class="bg-[#f5ede3]/80 backdrop-blur-md rounded-2xl py-3 shadow-md">
+              <p id="hours" class="text-xl font-semibold">00</p>
+              <span class="text-[10px] tracking-wide">Hours</span>
+            </div>
+
+            <div class="bg-[#f5ede3]/80 backdrop-blur-md rounded-2xl py-3 shadow-md">
+              <p id="minutes" class="text-xl font-semibold">00</p>
+              <span class="text-[10px] tracking-wide">Minutes</span>
+            </div>
+
+            <div class="bg-[#f5ede3]/80 backdrop-blur-md rounded-2xl py-3 shadow-md">
+              <p id="seconds" class="text-xl font-semibold">00</p>
+              <span class="text-[10px] tracking-wide">Seconds</span>
+            </div>
+
+          </div>
+
+
+          <div class="bg-[#f5ede3]/90 backdrop-blur-md
+  rounded-3xl p-7 shadow-xl space-y-6 
+  w-full max-w-xs fade-item text-[#5c3a2e]">
+
+            <div>
+              <h4 class="text-lg font-semibold font-['Playfair_Display'] text-[#c08a5b]">
+                Resepsi
+              </h4>
+              <p class="text-sm mt-1">08.00 WIB - Selesai</p>
+              <p class="text-sm mt-2 mb-3">
+                Desa Labanasem Rt:02, Rw:02 <br>
+                (Bertempat di Kediaman Mempelai Pria)
+              </p>
+
+              <a href="https://q.me-qr.com/kdf98c02" target="_blank" class="inline-flex items-center gap-2 px-5 py-2 rounded-full
+      bg-[#c49a6c] text-white text-sm
+      shadow-md hover:scale-105 transition duration-300">
+
+                <img src="https://cdn-icons-png.flaticon.com/128/2776/2776063.png" class="w-4 h-4">
+                Lokasi Resepsi
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="w-full min-h-[100svh] relative reveal overflow-hidden">
+
+        <!-- Background -->
+        <img src="section 5.jpg" alt="Gallery Background" class="absolute inset-0 w-full h-full object-cover">
+
+        <!-- Content -->
+        <div class="relative z-10 px-6 py-20 flex flex-col items-center">
+
+          <!-- Title -->
+          <h2 class="text-3xl font-['Playfair_Display'] text-[#c08a5b] mb-10 fade-item">
+            Our Gallery
+          </h2>
+
+          <!-- Grid Gallery -->
+          <div class="grid grid-cols-2 gap-4 max-w-sm fade-item">
+
+            <div class="overflow-hidden rounded-2xl shadow-lg">
+              <img src="WhatsApp Image 2026-03-29 at 08.30.32.jpeg"
+                class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            </div>
+
+            <div class="overflow-hidden rounded-2xl shadow-lg">
+              <img src="WhatsApp Image 2026-03-29 at 08.30.33.jpeg"
+                class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            </div>
+
+            <div class="overflow-hidden rounded-2xl shadow-lg">
+              <img src="WhatsApp Image 2026-03-29 at 08.30.33 (1).jpeg"
+                class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            </div>
+
+            <div class="overflow-hidden rounded-2xl shadow-lg">
+              <img src="WhatsApp Image 2026-03-29 at 08.30.32.jpeg"
+                class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="w-full min-h-[100svh] relative reveal overflow-hidden">
+
+        <img src="section 6.jpg" alt="Section 7" class="absolute inset-0 w-full h-full object-cover">
+
+        <div class="relative z-10 flex flex-col items-center justify-center
+        text-center min-h-[100svh] px-6 py-20">
+
+          <h3 class="font-title text-3xl text-[#c08a5b] mb-4 fade-item">
+            Wedding Gift
+          </h3>
+
+          <p class="text-sm text-white mb-12 max-w-xs leading-relaxed fade-item">
+            Doa restu Anda merupakan karunia yang sangat berarti bagi kami.
+            Namun jika memberi adalah ungkapan tanda kasih,
+            Anda dapat memberi kado secara cashless.
+          </p>
+
+
+          <div class="bg-white/85 backdrop-blur-md border border-gray-200
+          rounded-2xl p-7 shadow-lg w-full max-w-sm mb-6 fade-item
+          transition hover:shadow-xl">
+
+            <div class="flex justify-center mb-5">
+              <img src="mandiri.png"
+                class="h-10 object-contain">
+            </div>
+
+            <p class="text-lg font-semibold tracking-widest text-gray-800">
+              1430033683085
+            </p>
+
+            <p class="text-sm text-gray-600 mt-1 mb-5">
+              MOH SHOHIBUR RIDA'
+            </p>
+
+            <button onclick="copyRek('1430033683085')" class="px-6 py-2.5 rounded-full text-white text-sm
+        shadow-md transition duration-300
+        hover:scale-105 hover:shadow-lg" style="background:#c49a6c;">
+
+              Salin Rekening
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full min-h-[100svh] relative reveal overflow-hidden">
+
+        <img src="section 7.jpg" alt="Section 8" class="absolute inset-0 w-full h-full object-cover">
+
+        <div class="relative z-10 flex flex-col items-center justify-center
+        text-center min-h-[100svh] px-6 py-20">
+
+          <h3 class="font-title text-3xl text-[#c08a5b] mb-3 fade-item">
+            RSVP
+          </h3>
+
+          <p class="text-sm text-white mb-10 max-w-xs fade-item">
+            Mohon konfirmasi kehadiran serta doa terbaik Anda
+            untuk hari bahagia kami.
+          </p>
+
+          <div class="bg-white/85 backdrop-blur-md border border-[#e6d3b3]
+          rounded-3xl p-7 shadow-xl w-full max-w-sm space-y-5 fade-item
+          transition hover:shadow-2xl">
+
+            <input id="name" type="text" placeholder="Nama Anda" class="w-full px-4 py-3 rounded-xl border border-[#e6d3b3]
+  focus:outline-none focus:ring-2 focus:ring-[#c08a5b]
+  text-sm text-black placeholder-gray-400 bg-white">
+
+
+            <div class="flex flex-col items-start gap-3 text-sm text-gray-700">
+
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="attendance" value="Hadir" class="accent-[#c08a5b]">
+                <span>Hadir</span>
+              </label>
+
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="attendance" value="Tidak Hadir" class="accent-[#c08a5b]">
+                <span>Tidak Hadir</span>
+              </label>
+
+            </div>
+
+            <textarea rows="3" id="message" placeholder="Tulis ucapan & doa..." class="w-full px-4 py-3 rounded-xl border border-[#e6d3b3]
+  focus:outline-none focus:ring-2 focus:ring-[#c08a5b]
+  text-sm resize-none text-black placeholder-gray-400 bg-white"></textarea>
+
+            <button id="submitBtn" class="w-full py-3 rounded-full text-white text-sm
+        shadow-md transition duration-300
+        hover:scale-105 hover:shadow-lg" style="background:#c49a6c;">
+
+              Kirim RSVP
+
+            </button>
+            <div id="comment-list" class="mt-6 space-y-3 text-left max-h-40 overflow-y-auto"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="w-full flex justify-center reveal">
+
+        <div class="relative w-full max-w-[430px] aspect-[9/16] overflow-hidden">
+
+          <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+            <source src="section 8.mp4" type="video/mp4">
+          </video>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+
+  <script>
+    const client = window.supabase.createClient(
+      "https://wtkylbcbakldofgkktbd.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind0a3lsYmNiYWtsZG9mZ2trdGJkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NDUwMjY4MSwiZXhwIjoyMDkwMDc4NjgxfQ.gPZEcmcV5juGKGImfEqcy6p6Wgj58qgri08frLR77UA"
+    );
+
+    const nameInput = document.getElementById("name");
+    const messageInput = document.getElementById("message");
+    const radios = document.getElementsByName("attendance");
+    const button = document.getElementById("submitBtn");
+    const list = document.getElementById("comment-list");
+
+    async function loadComments() {
+      const { data, error } = await client
+        .from("rsvp3")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.log(error);
+        return;
+      }
+
+      list.innerHTML = "";
+
+      data.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "bg-white border border-[#e6d3b3] p-4 rounded-2xl text-sm shadow-sm";
+
+        div.innerHTML = `
+  <div class="flex justify-between items-center mb-1">
+    <strong class="text-[#5c3a2e]">${item.name}</strong>
+    <span class="text-[10px] px-2 py-1 rounded-full ${item.attendance === 'Hadir'
+            ? 'bg-green-100 text-green-600'
+            : 'bg-red-100 text-red-500'
+          }">
+      ${item.attendance}
+    </span>
+  </div>
+
+  <p class="text-gray-600 text-xs leading-relaxed">
+    ${item.message || "-"}
+  </p>
+    `;
+
+        list.appendChild(div);
+      });
+    }
+
+    loadComments();
+
+    button.addEventListener("click", async () => {
+      const name = nameInput.value.trim();
+      const message = messageInput.value.trim();
+
+      let attendance = "";
+      radios.forEach(r => {
+        if (r.checked) attendance = r.value;
+      });
+
+      if (!name || !attendance) {
+        alert("Isi nama dan kehadiran dulu ya");
+        return;
+      }
+
+      const { error } = await client.from("rsvp3").insert([
+        { name, attendance, message }
+      ]);
+
+      if (error) {
+        console.log(error);
+        alert("Gagal kirim 😢");
+        return;
+      }
+
+      loadComments();
+      nameInput.value = "";
+      messageInput.value = "";
+    });
+  </script>
+
+  <script>
+    const openBtn = document.getElementById("openBtn");
+    const cover = document.getElementById("cover");
+    const content = document.getElementById("content");
+    const loader = document.getElementById("loader");
+    const coverVideo = document.querySelector("#cover video");
+
+    coverVideo.addEventListener("loadeddata", function () {
+      loader.style.opacity = "0";
+      loader.style.transition = "opacity 0.10s ease";
+
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 1000);
+    });
+
+    openBtn.addEventListener("click", function () {
+      cover.remove();
+      content.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "instant" });
+    });
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    reveals.forEach(reveal => {
+      observer.observe(reveal);
+    });
+  </script>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+    const iconPlay = document.getElementById("iconPlay");
+    const iconPause = document.getElementById("iconPause");
+
+    openBtn.addEventListener("click", function () {
+      music.play().catch(() => { });
+      musicBtn.classList.remove("hidden");
+      iconPlay.classList.add("hidden");
+      iconPause.classList.remove("hidden");
+    });
+
+    musicBtn.addEventListener("click", function () {
+      if (music.paused) {
+        music.play();
+        iconPlay.classList.add("hidden");
+        iconPause.classList.remove("hidden");
+      } else {
+        music.pause();
+        iconPlay.classList.remove("hidden");
+        iconPause.classList.add("hidden");
+      }
+    });
+  </script>
+
+  <script>
+    const targetDate = new Date("2026-04-06T08:00:00+07:00").getTime();
+
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / 1000 / 60) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("days").innerHTML = 0;
+        document.getElementById("hours").innerHTML = 0;
+        document.getElementById("minutes").innerHTML = 0;
+        document.getElementById("seconds").innerHTML = 0;
+      }
+    }, 1000);
+  </script>
+
+  <script>
+    function copyRek(nomor) {
+      navigator.clipboard.writeText(nomor);
+      alert("Nomor rekening berhasil disalin");
+    }
+  </script>
+
+  <script>
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    document.addEventListener("dragstart", e => e.preventDefault());
+
+    document.addEventListener("keydown", function (e) {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && e.key === "I") ||
+        (e.ctrlKey && e.shiftKey && e.key === "J") ||
+        (e.ctrlKey && e.key === "U")
+      ) {
+        e.preventDefault();
+      }
+    });
+  </script>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get("to");
+
+    if (guestName) {
+      document.querySelectorAll(".guest-name").forEach(el => {
+        el.textContent = decodeURIComponent(guestName);
+      });
+    }
+  </script>
+
+</body>
+
+</html>
